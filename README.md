@@ -27,3 +27,4 @@ previamente cargadas, no necesitan acceder a la api. Para hacer esto lo que suel
 Por falta de tiempo,hice un test básico, más que nada para que veas como hago el setup y que packages uso.
 Aquí normalmente hubiese hecho tests para todos los componentes y páginas aparte
 
+En cuanto al ui, se podría hacer mucho mejor, pero lo hice decente :) He estado bastante liado
