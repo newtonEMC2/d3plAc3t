@@ -39,15 +39,22 @@ export default function Home({ page, status, name }) {
 
     const handleStatusBtn = async () => {
         setStatusBtn(!statusBtn).then((value) => {
-            if (value) setQuery({ ...query, status: 'alive' }).then((value) => updateQuery(value))
-            else setQuery({ ...query, status: false }).then((value) => updateQuery(value))
+            if (value)
+                setQuery({ ...query, status: 'alive', page: '1' }).then((value) =>
+                    updateQuery(value)
+                )
+            else
+                setQuery({ ...query, status: false, page: '1' }).then((value) => updateQuery(value))
         })
     }
 
     const handleNameField = (e) => {
         const { value } = e.target
-        if (value) setQuery({ ...query, name: e.target.value }).then((value) => updateQuery(value))
-        else setQuery({ ...query, name: '' }).then((value) => updateQuery(value))
+        if (value)
+            setQuery({ ...query, name: e.target.value, page: '1' }).then((value) =>
+                updateQuery(value)
+            )
+        else setQuery({ ...query, name: '', page: '1' }).then((value) => updateQuery(value))
     }
 
     const handlePageField = (e, page) => {
@@ -92,11 +99,12 @@ export default function Home({ page, status, name }) {
 }
 
 export async function getServerSideProps({ query }) {
+    const { page, status, name } = query
     return {
         props: {
-            page: query.page || 1,
-            status: query.status || false,
-            name: query.name || ''
+            page: page || '1',
+            status: status || false,
+            name: name || ''
         }
     }
 }
