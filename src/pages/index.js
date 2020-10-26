@@ -102,9 +102,9 @@ export async function getServerSideProps({ query }) {
     const { page, status, name } = query
     return {
         props: {
-            page: page || '1',
-            status: status || false,
-            name: name || ''
+            page: page ? decodeURI(page) : '1',
+            status: status ? decodeURI(status) : false,
+            name: name ? decodeURI(name) : ''
         }
     }
 }
